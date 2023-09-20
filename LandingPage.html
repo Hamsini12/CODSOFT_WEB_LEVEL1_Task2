@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>LandingPage</title>
+        <style>
+            body{
+                background: url("bgimg.jpg") no-repeat fixed;
+                background-size: 100% 100%;
+            }
+            section {
+                background-color: transparent;
+                margin:0;
+                padding:0;
+            }
+            section p{
+                text-align: center;
+                color:black;
+                font-size: 3.5vw;
+                font-family:cursive;
+                font-weight: bolder;
+                letter-spacing: 3px;
+            }
+            section hr{
+                width: 15%;
+                border:2px solid black;
+            }
+            .container{
+                width: 90%;
+                margin: 3% auto;
+                padding:0;
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                background: conic-gradient(transparent 55deg,#c36241 90deg,transparent 35%) no-repeat scroll;
+                align-items: center;
+                box-shadow: 16px 14px 20px #0000008c;
+                border: 1px inset #0000008c;
+            }
+            img{
+                width: 80%;
+                height: 100%;
+                margin: 3%;
+                border-radius: 1rem;
+            }
+            .infoBox{
+                width: 80%;
+                margin: 0 auto;
+                border:double black;
+                > p{
+                    text-align: center;
+                    color: #000;
+                    font-size: 2.5vw;
+                    font-family: math;
+                    font-weight: bold;
+                }
+                > span{
+                    display: block;
+                    text-align: center;
+                }
+            }
+            .container2{
+                width: 70%;
+                height: 0;
+                padding-bottom: 15%;
+                display: flex;
+                margin:0 auto;
+            }
+
+            .timebox{
+                width: 17%;
+                height: 0;
+                padding-bottom: 17%;
+                margin:auto;
+                border: 3px solid black;
+                border-radius: 10% 50%;
+            }
+            #day,#hour,#min,#secs{
+                font-family: math;
+                font-weight: bolder;
+                font-size: 1.3vw;
+                color: #000;
+            }
+            input[type=button]
+            {
+                display: block;
+                margin: 5% auto;
+                border-radius: 1rem;
+                width: 45%;
+                height:0;
+                padding-bottom: 8%;
+                padding-top: 2%;
+                background-color: transparent;
+                border:3px solid black;
+                font-size: 2vw;
+                font-family: math;
+                font-weight: bold;
+            }
+            .infoBox a{
+                text-decoration: none;
+            }
+        </style>
+    </head>
+    <body>
+        <section>
+            <p>Natural Clay<br>Pottery Course</p>
+            <hr/>
+            <div class="container">
+                <img src="Potteryimage.jpeg">
+                <div class="infoBox">
+                    <p id="firstp">Join Art class <br>Open for all people</p>
+                    <span>Course will commense from : 14/10/2023</span>
+                    <span>Register ASAP</span><br>
+                    <div class="container2">
+                        <div class="timebox"><p id="day"></p></div>
+                        <div class="timebox"><p id="hour"></p></div>
+                        <div class="timebox"><p id="min"></p></div>
+                        <div class="timebox"><p id="secs"></p></div>
+                    </div>
+                    <p><a href="https://forms.gle/jdq8Aokxqm2cijZd8"><input type="button" value="Register here"></a></p>
+                </div>    
+            </div>
+        </section>
+        <script>
+            var CountDownDate= new Date("Sep 28,2023 00:00:00").getTime();
+            var countdownfun=setInterval(function(){
+                var now= new Date().getTime();
+                var diff=CountDownDate-now;
+                var days=Math.floor(diff/(1000*60*60*24));
+                var hours=Math.floor((diff%(1000*60*60*24))/(1000*60*60));
+                var mins=Math.floor((diff%(1000*60*60))/(1000*60));
+                var sec=Math.floor((diff%(1000*60))/1000);
+                document.getElementById("day").innerHTML=days+"d ";
+                document.getElementById("hour").innerHTML=hours+"h "
+                document.getElementById("min").innerHTML=mins+"m ";
+                document.getElementById("secs").innerHTML=sec+"s";
+                if(diff<0)
+                {
+                    clearInterval(countdownfun);
+                    document.getElementById("time").innerHTML="OOPS! It's EXPIRED";
+                }
+            },1000);
+        </script>
+    </body>
+</html>
